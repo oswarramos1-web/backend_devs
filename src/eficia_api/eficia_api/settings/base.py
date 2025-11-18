@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
 
     # apps del proyecto
     'apps.empresas',
@@ -83,19 +84,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DRF + JWT
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
     ),
+    "DEFAULT_PAGINATION_CLASS":
+    "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }
 
+
 # Simple JWT
+# para producción activa ROTATE_REFRESH_TOKENS=True y habilita blacklist
+# (requiere rest_framework_simplejwt.token_blacklist en INSTALLED_APPS).
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
     'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
 }
 
 # CORS
