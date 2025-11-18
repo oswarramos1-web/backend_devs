@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     # apps
+
     'apps.empresas',
     'apps.usuarios',
     'apps.conceptos',
