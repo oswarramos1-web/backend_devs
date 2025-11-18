@@ -18,20 +18,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # terceros
-    'rest_framework',
-    'corsheaders',
-    'drf_yasg',
-    # apps
 
+    # apps del proyecto
     'apps.empresas',
     'apps.usuarios',
     'apps.conceptos',
     'apps.contabilidad',
     'apps.nomina',
-    'apps.core',
-    'apps.core.middleware.MultiEmpresaMiddleware',
-
+    'apps.core',  # si core está dentro de apps
 ]
 
 MIDDLEWARE = [
@@ -70,15 +64,11 @@ WSGI_APPLICATION = 'eficia_api.wsgi.application'
 # Database (se asume MySQL)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE', 'eficia_db'),
-        'USER': os.getenv('MYSQL_USER', 'eficia_user'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD', 'eficia_pass'),
-        'HOST': os.getenv('MYSQL_HOST', 'db'),
-        'PORT': os.getenv('MYSQL_PORT', '3306'),
-        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = []
 
