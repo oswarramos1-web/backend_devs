@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'apps.contabilidad',
     'apps.nomina',
     'apps.core',
+    'apps.core.middleware.MultiEmpresaMiddleware',
+
 ]
 
 MIDDLEWARE = [

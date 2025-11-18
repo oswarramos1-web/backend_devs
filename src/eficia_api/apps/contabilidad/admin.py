@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import CuentaPUC  # ejemplo, el tuyo puede tener otro nombre
+from .models import Cuenta
 
-admin.site.register(CuentaPUC)
+admin.site.register(Cuenta)
